@@ -5,6 +5,8 @@ import { typeDefs as blockDefs } from './Block/typeDefs'
 import { typeDefs as databaseDefs } from './Database/typeDefs'
 import { typeDefs as pageDefs } from './Page/typeDefs'
 import { typeDefs as userDefs } from './User/typeDefs'
+import { typeDefs as propertyDefs } from './PropertyValue/typeDefs'
+import { typeDefs as richTextDefs } from './RichText/typeDefs'
 
 export const typeDefs = gql`
   interface ObjectNode {
@@ -16,6 +18,8 @@ export const typeDefs = gql`
     type: Type
   }
 
+  ${richTextDefs}
+  ${propertyDefs}
   ${scalarDefs}
   ${enumDefs}
   ${blockDefs}

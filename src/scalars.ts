@@ -5,8 +5,16 @@ import {
   URLResolver,
   EmailAddressTypeDefinition,
   EmailAddressResolver,
+  JSONDefinition,
+  JSONResolver,
   JSONObjectDefinition,
-  JSONObjectResolver
+  JSONObjectResolver,
+  DateResolver,
+  DateTypeDefinition,
+  TimeTypeDefinition,
+  TimeResolver,
+  DateTimeTypeDefinition,
+  DateTimeResolver
 } from 'graphql-scalars'
 import { ResolverMap } from './types'
 
@@ -15,13 +23,21 @@ const PropertyScalar = new GraphQLScalarType({
 })
 
 export const scalarDefs = gql`
+  ${DateTimeTypeDefinition}
+  ${DateTypeDefinition}
+  ${TimeTypeDefinition}
   ${URLTypeDefinition}
   ${EmailAddressTypeDefinition}
+  ${JSONDefinition}
   ${JSONObjectDefinition}
 `
 
 export const resolvers: ResolverMap = {
+  DateTime: DateTimeResolver,
+  Date: DateResolver,
   URL: URLResolver,
   EmailAdress: EmailAddressResolver,
-  JSONObject: JSONObjectResolver
+  JSON: JSONResolver,
+  JSONObject: JSONObjectResolver,
+  Time: TimeResolver
 }

@@ -5,6 +5,8 @@ import { resolvers as blockResolvers } from './Block/resolvers'
 import { resolvers as databaseResolvers } from './Database/resolvers'
 import { resolvers as pageResolvers } from './Page/resolvers'
 import { resolvers as userResolvers } from './User/resolvers'
+import { resolvers as propertValueyResolvers } from './PropertyValue/resolvers'
+import { resolvers as richTextResolvers } from './RichText/resolvers'
 
 export const resolvers: ResolverMap = merge(
   scalarResolvers,
@@ -12,6 +14,8 @@ export const resolvers: ResolverMap = merge(
   databaseResolvers,
   pageResolvers,
   userResolvers,
+  propertValueyResolvers,
+  richTextResolvers,
   {
     ObjectNode: {
       __resolveType(obj) {
@@ -20,11 +24,13 @@ export const resolvers: ResolverMap = merge(
     },
     TypeNode: {
       __resolveType(obj) {
-        return upperFirst(camelCase(obj.type))
+        const richText = richTextResolvers.RichText.__resolveType(obj)
+        if (typeof richText === 'string') return richText
+        return null
       }
     },
     Query: {
-      async search(root, args, { dataSources,  }) {
+      async search(root, args, { dataSources }) {
         const response = await dataSources.notion.search(args)
         return response
       }

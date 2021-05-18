@@ -1,17 +1,39 @@
 import { ResolverMap } from '../types'
 
 export const resolvers: ResolverMap = {
-  RichText: {
-    __resolveType(obj) {
-      switch (obj.type) {
-        case 'text':
-          return 'RichTextText'
-        case 'mention':
-          return 'RichTextMention'
-        case 'equation':
-          return 'RichTextEquation'
-      }
-    }
+  BulletedListItemBlock: {
+    text: (root) => root.bulleted_list_item?.text,
+    children: (root) => root.bulleted_list_item?.children
+  },
+
+  HeadingOneBlock: {
+    text: (root) => root.heading_1.text
+  },
+  HeadingTwoBlock: {
+    text: (root) => root.heading_2.text
+  },
+  HeadingThreeBlock: {
+    text: (root) => root.heading_3.text
+  },
+  NumberedListItemBlock: {
+    text: (root) => root.numbered_list_item?.text,
+    children: (root) => root.numbered_list_item?.children
+  },
+  Paragraph: {
+    text: (root) => root.paragraph?.text,
+    children: (root) => root.paragraph?.children
+  },
+  ToDoBlock: {
+    text: (root) => root.to_do?.text,
+    checked: (root) => root.to_do.checked,
+    children: (root) => root.to_do.children
+  },
+  ToggleBlock: {
+    text: (root) => root.toggle.text,
+    children: (root) => root.toggle.children
+  },
+  ChildPageBlock: {
+    title: (root) => root.child_page.title
   },
   Block: {
     __resolveType(obj) {

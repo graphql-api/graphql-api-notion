@@ -1,4 +1,7 @@
 {
   "name": "@graphql-api/notion",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "@notionhq/client": "^0.1.3"
+  }
 }
