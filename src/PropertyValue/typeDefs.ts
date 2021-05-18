@@ -254,12 +254,12 @@ export const typeDefs = gql`
   type PeoplePropertyValue implements PropertyValue {
     id: ID!
     type: PropertyValueType!
-    people: [NotionUser]
+    people: [User]
   }
 
   type PeoplePropertyValueElement implements PropertyValueElement {
     type: PropertyValueType!
-    people: [NotionUser]
+    people: [User]
   }
 
   type FilesPropertyValue implements PropertyValue {
@@ -331,12 +331,12 @@ export const typeDefs = gql`
   type CreatedByPropertyValue implements PropertyValue {
     id: ID!
     type: PropertyValueType!
-    created_by: NotionUser
+    created_by: User
   }
 
   type CreatedByPropertyValueElement implements PropertyValueElement {
     type: PropertyValueType!
-    created_by: NotionUser
+    created_by: User
   }
 
   type LastEditedTimePropertyValue implements PropertyValue {
@@ -353,12 +353,12 @@ export const typeDefs = gql`
   type LastEditedByPropertyValue implements PropertyValue {
     id: ID!
     type: PropertyValueType!
-    last_edited_by: NotionUser
+    last_edited_by: User
   }
 
   type LastEditedByPropertyValueElement implements PropertyValueElement {
     type: PropertyValueType!
-    last_edited_by: NotionUser
+    last_edited_by: User
   }
 `
 

@@ -1,20 +1,20 @@
 import { gql } from 'apollo-server-core'
 
 export const typeDefs = gql`
-  type NotionPersonEmail {
+  type PersonEmail {
     email: EmailAddress
   }
 
-  type NotionPerson implements NotionUser & ObjectNode & TypeNode {
+  type Person implements User & ObjectNode & TypeNode {
     object: Object!
     type: Type!
     id: ID!
-    person: NotionPersonEmail
+    person: PersonEmail
     name: String
     avatar_url: URL
   }
 
-  type NotionBot implements NotionUser & ObjectNode {
+  type Bot implements User & ObjectNode {
     object: Object!
     type: Type!
     id: ID!
@@ -22,7 +22,7 @@ export const typeDefs = gql`
     avatar_url: URL
   }
 
-  interface NotionUser {
+  interface User {
     object: Object!
     type: Type!
     id: ID!
@@ -31,8 +31,8 @@ export const typeDefs = gql`
   }
 
   extend type Query {
-    notionUser(input: NotioUserInput!): NotionUser
-    listNotionUsers: [NotionUser]
+    notionUser(input: NotioUserInput!): User
+    listUsers: [User]
   }
 
   input NotioUserInput {

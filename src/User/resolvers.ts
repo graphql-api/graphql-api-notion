@@ -1,13 +1,13 @@
 import { ResolverMap } from '../types'
 
 export const resolvers: ResolverMap = {
-  NotionUser: {
+  User: {
     __resolveType(obj) {
       switch (obj.type) {
         case 'person':
-          return 'NotionPerson'
+          return 'Person'
         case 'bot':
-          return 'NotionBot'
+          return 'Bot'
         default:
           return null
       }
@@ -24,7 +24,7 @@ export const resolvers: ResolverMap = {
       }
       return null
     },
-    async listNotionUsers(root, args, { dataSources: { notion } }) {
+    async listUsers(root, args, { dataSources: { notion } }) {
       const users = await notion.users.list(args)
       return users.results
     }
