@@ -1,6 +1,6 @@
 export { resolvers } from './resolvers'
 export { typeDefs } from './typeDefs'
-import { NotionDataSource } from './dataSource'
+import { NotionDataSource } from './datasource'
 
 export const dataSourceParams: ConstructorParameters<
   typeof NotionDataSource
@@ -8,4 +8,6 @@ export const dataSourceParams: ConstructorParameters<
   notion_token: process.env.NOTION_TOKEN
 }
 
-export { NotionDataSource }
+export { NotionDataSource, NotionDataSource as datasource }
+
+export const name = 'notion'
